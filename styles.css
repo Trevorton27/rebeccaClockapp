@@ -1,18 +1,16 @@
 body {
 	background: #32beed;
 	font-family: 'Architects Daughter', cursive, 'Open Sans', sans-serif;
-	display: flex;
-	align-items: center;
+	font-size: 2em;
 }
-.time {
+#container {
 	display: flex;
 	justify-content: center;
-	font-size: 60px;
 	align-items: center;
-	flex-grow: 1;
+	min-height: 100vh;
+	flex-direction: column;
 }
+
 .date {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	font-size: 0.75em;
 }

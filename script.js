@@ -61,7 +61,7 @@ let arrMonths = [
 ];
 let weekday = currentDate.getDay();
 let month = currentDate.getMonth();
-let todaysDate = currentDate.getDay();
+let todaysDate = currentDate.getDate();
 let year = currentDate.getFullYear();
 let ordinalDate = numberToOrdinal(todaysDate);
 document.getElementById('current-date').innerHTML =

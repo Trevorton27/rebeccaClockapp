@@ -1,13 +1,6 @@
 let currentDate = new Date();
 
 //Current Time
-function updateTime(number) {
-  if (number < 10) {
-    return '0' + number;
-  } else {
-    return number;
-  }
-}
 
 function currentTime() {
   const timeNow = new Date();
@@ -29,6 +22,13 @@ function currentTime() {
   document.getElementById('amPm').textContent = amOrPm;
 }
 
+function updateTime(number) {
+  if (number < 10) {
+    return '0' + number;
+  } else {
+    return number;
+  }
+}
 //Current Date
 const daysOfWeek = [
   'Sunday',
@@ -67,21 +67,15 @@ document.getElementById('date').textContent = ordinalDate;
 document.getElementById('year').textContent = year;
 
 function numberToOrdinal(number) {
-  let j = number % 10;
-  let k = number % 100;
-
-  if (number == 0) {
-    return number;
-  }
-
-  if (j == 1 && k != 11) {
-    return number + 'st';
-  }
-  if (j == 2 && k != 12) {
-    return number + 'nd';
-  }
-  if (j == 3 && k != 13) {
-    return number + 'rd';
+  if (number > 20 || number < 10) {
+    switch (number % 10) {
+      case 1:
+        return number + 'st';
+      case 2:
+        return number + 'nd';
+      case 3:
+        return number + 'rd';
+    }
   }
   return number + 'th';
 }

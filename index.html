@@ -1,26 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DIGITAL CLOCK APP</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Open+Sans&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 
 </head>
+
 <body>
   <div id="container">
     <div class="time">
       <h1>Digital Clock</h1>
-      <h1 id="current-time"></h1>
+      <div id="clockWrapper">
+        <div id="current-time" class="innerClockWrapper">
+<span id="displayHours"></span>: 
+<span id="displayMinutes"></span>:
+<span id="displaySeconds"></span>
+        </div>
+        <div id="amPm" class="innerClockWrapper"></div>
+      </div>
+
     </div>
-   <div class="date">
-    <h1 id="current-date"></h1>
-   </div> 
+    <div class="date">
+      <h1 id="current-date">
+        <span id="day"></span>
+        <span id="month"></span>
+        <span id="date"></span>
+        <span id="year"></span>
+      </h1>
+      <div>
+    
+      </div>
+    </div>
   </div>
-  
-  
+
+
   <script type="text/javascript" src="script.js"></script>
 </body>
+
 </html>

@@ -1,94 +1,91 @@
 let currentDate = new Date();
 
 //Current Time
-function updateTime(i) {
-	if (i < 10) {
-		return '0' + i;
-	} else {
-		return i;
-	}
+function updateTime(number) {
+  if (number < 10) {
+    return '0' + number;
+  } else {
+    return number;
+  }
 }
 
 function currentTime() {
-	let timeNow = new Date();
-	let hour = timeNow.getHours();
-	let min = timeNow.getMinutes();
-	let sec = timeNow.getSeconds();
-	let amOrPm;
-	// Format hours, minutes and seconds
-	if (hour > 12) {
-		amOrPm = 'PM';
-		hour = hour - 12;
-	} else {
-		amOrPm = 'AM';
-	}
+  const timeNow = new Date();
+  let hour = timeNow.getHours();
+  const min = updateTime(timeNow.getMinutes());
+  const sec = updateTime(timeNow.getSeconds());
+  let amOrPm;
+  // Format hours, minutes and seconds
+  if (hour > 12) {
+    amOrPm = 'PM';
+    hour = hour - 12;
+  } else {
+    amOrPm = 'AM';
+  }
 
-	hour = updateTime(hour);
-	min = updateTime(min);
-	sec = updateTime(sec);
-	document.getElementById('current-time').innerText =
-		hour + ':' + min + ':' + sec + ' ' + amOrPm;
-	let t = setTimeout(function () {
-		currentTime();
-	}, 1000); /* setting timer */
+  document.getElementById('displayHours').textContent = hour;
+  document.getElementById('displayMinutes').textContent = min;
+  document.getElementById('displaySeconds').textContent = sec;
+  document.getElementById('amPm').textContent = amOrPm;
+}
+
+//Current Date
+const daysOfWeek = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday'
+];
+
+const arrMonths = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+];
+
+const weekday = currentDate.getDay();
+const month = currentDate.getMonth();
+const todaysDate = currentDate.getDate();
+const year = currentDate.getFullYear();
+const ordinalDate = numberToOrdinal(todaysDate);
+
+document.getElementById('day').textContent = daysOfWeek[weekday];
+document.getElementById('month').textContent = arrMonths[month];
+document.getElementById('date').textContent = ordinalDate;
+document.getElementById('year').textContent = year;
+
+function numberToOrdinal(number) {
+  let j = number % 10;
+  let k = number % 100;
+
+  if (number == 0) {
+    return number;
+  }
+
+  if (j == 1 && k != 11) {
+    return number + 'st';
+  }
+  if (j == 2 && k != 12) {
+    return number + 'nd';
+  }
+  if (j == 3 && k != 13) {
+    return number + 'rd';
+  }
+  return number + 'th';
 }
 
 currentTime();
 
-//Current Date
-let daysOfWeek = [
-	'Sunday',
-	'Monday',
-	'Tuesday',
-	'Wednesday',
-	'Thursday',
-	'Friday',
-	'Saturday',
-];
-let arrMonths = [
-	'January',
-	'February',
-	'March',
-	'April',
-	'May',
-	'June',
-	'July',
-	'August',
-	'September',
-	'October',
-	'November',
-	'December',
-];
-let weekday = currentDate.getDay();
-let month = currentDate.getMonth();
-let todaysDate = currentDate.getDate();
-let year = currentDate.getFullYear();
-let ordinalDate = numberToOrdinal(todaysDate);
-document.getElementById('current-date').innerHTML =
-	daysOfWeek[weekday] +
-	', ' +
-	arrMonths[month] +
-	' ' +
-	ordinalDate +
-	' ' +
-	year;
-
-function numberToOrdinal(n) {
-	let j = n % 10;
-	let k = n % 100;
-
-	if (n == 0) {
-		return n;
-	}
-
-	if (j == 1 && k != 11) {
-		return n + 'st';
-	}
-	if (j == 2 && k != 12) {
-		return n + 'nd';
-	}
-	if (j == 3 && k != 13) {
-		return n + 'rd';
-	}
-	return n + 'th';
-}
+setInterval(currentTime, 1000);
